@@ -1,0 +1,65 @@
+{% load static %}
+
+{% block css %}
+<script src="https://kit.fontawesome.com/055b453045.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'style/author.css' %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&display=swap"
+        rel="stylesheet">
+       
+{% endblock %}
+
+{% block body %}
+{% include 'header.html' %}
+<div class="author">
+  <h2>Authors</h2>
+  <div class="search-container">
+    <form action="#">
+
+      <input type="text" placeholder="Search.." name="search" height="400px">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <!-- <hr> -->
+    <div class="author-container">
+      {% for Profile in author %}
+      <div class="author-info">
+        <div class="author-image">
+          <img src="{{Profile.auth_image.url}}" alt="" style="width:100%">
+        </div>
+        <div class="author-dsc">
+          <div class="author-name">
+           {{Profile.user_name}}
+
+            <a href="profile.html">(View posts)</a>
+          </div>
+          <div class="author-Bio">
+            <h5>{{Profile.full_name}}</h5>
+           {{Profile.Bio|slice:"250"}}
+          </div>
+          
+          <div class="social-buttons">
+            {% if Profile.instagram %}
+            <a href= "{{Profile.instagram}}" class="social-buttons__button social-button social-button--instagram" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            {% endif %}
+            <a href="#" class="social-buttons__button social-button social-button--linkedin" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-buttons__button social-button social-button--snapchat" aria-label="SnapChat">
+              <i class="fab fa-snapchat-ghost"></i>
+            </a>
+            <a href="#" class="social-buttons__button1  social-button social-button--github" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
