@@ -26,13 +26,13 @@
       {% for Profile in author %}
       <div class="author-info">
         <div class="author-image">
-          <img src="{{Profile.auth_image.url}}" alt="" style="width:100%">
+
         </div>
         <div class="author-dsc">
           <div class="author-name">
-           {{Profile.user_name}}
+           {{Profile.username}}
 
-            <a href="profile.html">(View posts)</a>
+            <a href="{% url 'profile'%}">(View posts)</a>
           </div>
           <div class="author-Bio">
             <h5>{{Profile.full_name}}</h5>
