@@ -1,5 +1,5 @@
 {% load static %}
-{% block css%}
+{% block css %}
 
 <link rel="stylesheet" type="text/css" media="screen" href="{% static 'style/read.css' %}"/>
 {% endblock %}
@@ -9,7 +9,9 @@
 
 
     <div class="title">
+
         <h1>{{post.blog_title}}</h1>
+        <span><i style="font-size:24px" class="fa">&#xf142;</i></span>
         <div class="underscores">by <a href="#">{{post.Author}}</a>
             <button>Follow</button> <br>
            <small>{{post.upload}}</small> 
@@ -23,22 +25,26 @@
                 </div>
                 <div class="post_text">
                     {{post.blog}}
-                    <br>
+                   <br>
                     {{post.tags}}<br>
                    <b> by:{{post.Pen_name}}</b> 
-                    <hr>
+                   <br>
+                   <button><a href="{% url 'update_blog' post.id %}">Edit</a></button>
+                   <button> <a href="{% url 'delete_blog' post.id %}">delete</a></button>
+                   <hr>
                 </div>
+        
             </div>
-
-            <form action="#" method="post">
-                <p>Leave a comment....</p>
-                <div class="commentbox">
-                    <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1em;">
-                </textarea>
-                </div>
-                <input type="submit" value="Submit">
-
-            </form>
+            <div class="response">
+                <ul>
+                    <li><a href=""><i class='fas fa-heart' style='font-size:36px; color:white'></i></a> </li>
+                    <li><a href=""><i class='fas fa-heart' style='font-size:36px; color:red'></i></a> </li>
+                    <li><a href=""><i class='far fa-comment' style='font-size:36px'></i></a></li>
+                    <li><a href=""><i class='fas fa-bookmark' style='font-size:30px'></i></a></li>
+                </ul>
+            
+          
+        </div>  
             <div class="comment-cont">
 
                 <p>Comments....</p>
