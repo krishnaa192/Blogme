@@ -22,10 +22,6 @@ height: 67px;
 
 
 }
-.icon h2{
-   padding: 0px 0px 0px 0px;
-
-}
 .menu{
    display: flex;
    /* position: relative; */
@@ -37,10 +33,10 @@ height: 67px;
 }
 .menu ul li a{
    color: white;
-   
-   padding:0px 0px 7px 42px;
+   display: block;
+   padding: 7px 42px;
    text-decoration: none;
-  
+   /* padding: 21px; */
 }
 .menu ul {
    list-style-type: none;
@@ -60,47 +56,50 @@ header .menu-toggle{
    display: none;
 }
 
-
-h1{
-   text-align: center;
-   margin: 5px 0px 1px 270px;
-   font-size: 3rem;
-   font-family: Bebas Neue;
-}
-
 .home::before{
-   content: "";
-   position: absolute;
-   background: url('centre/img/main.jpg') no-repeat center center/cover;
-   height: 460px;
-   width: 100%;
-   z-index: -1;
+    content: "";
+    /* position: absolute; */
+    background: url('static/blogging/images/img1.jpg') no-repeat center center/cover;
+    height: 460px;
+    width: 100%;
+    z-index: -1;
+    opacity: 23px;
 }
 .home{
-    display: flex; 
-    flex-direction: column;
-    padding:10px 22px;
+     display: flex; 
+     flex-direction: column;
+    padding:10px,22px ;
     align-items: center;
     justify-content: center;
     height: 460px;
+    border: 1px black solid;
 }
+.home h1{
 
+  background-color: pink;
+}
 .home h2{
- padding: 12px 0px 2px 270px
+  padding-right: 13rem;
 }
-button{
-font-size: 1.0rem;
-border-radius: 14px;
-background-color:bisque;
-margin: 3x;
-padding: 12px; 
-border: crimson;
-cursor: pointer;
+.button{
+  font-size: 1.0rem;
+  border-radius: 14px;
+  background-color:pink;
+  margin: 3x;
+  padding: 12px; 
+  border: crimson;
+  cursor: pointer;
 }
-button:hover{
-  background-color:cornsilk;
-  color:black;
+.button:hover{
+   background-color:cornsilk;
+   color:black;
 }
+/* h1{
+   text-align: center;
+   margin-top: 42px;
+   font-size: 3rem;
+   font-family: Bebas Neue;
+} */
 /* #bottom new posts */
 .bottom{
    display: flex;

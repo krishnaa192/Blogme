@@ -24,7 +24,7 @@ class Tags(models.Model):
 
 
 class Blog(models.Model):
-    Author=models.ForeignKey(Profile,on_delete=models.CASCADE,name="Author", null="True")
+    Author=models.ForeignKey(Profile,on_delete=models.CASCADE,name="Author")
     blog=models.TextField()
     blog_title=models.CharField(max_length=33)
     desc=models.CharField(max_length=100, null=True)
@@ -33,6 +33,8 @@ class Blog(models.Model):
     blog_image=models.ImageField(null=True,blank=True,upload_to='static/blogging/images')
     Pen_name=models.CharField(max_length=7)
     tags=models.ForeignKey(Tags, on_delete=models.CASCADE,null=True,blank=True,name="tags")
+    insta=models.CharField(max_length=20, blank=True)
+    linkedin=models.CharField(max_length=9,blank=True)
     upload=models.DateTimeField(auto_now_add=True)
 
     class Meta:

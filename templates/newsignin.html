@@ -4,36 +4,30 @@
 {% endblock %}
 
 {% block body %}
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+ 
 <div class="main">
   <a href="{% url 'Home' %}">Go to page</a>
 <h2>Login </h2>
 
-<form action="{% url 'login' %}" method="POST">
+<form action="#" method="post">
  
-{%  csrf_token %}
+
 
   <div class="container">
-    <label for="username"><b>username</b></label>
-    <input type="text" placeholder="username" name="username" required>
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
 <br>
-    <label for="password"><b>password</b></label>
-    <input type="password" placeholder="****************" name="password" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
         <br>
-    <button type="submit" value="login">Login</button>
+    <button type="submit">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
   </div>
 <br>
   <div class="container" style="background-color:#f1f1f1">
-     <a href="{% url 'signup' %}">New User?</a>
+    <button type="button" class="cancelbtn"> <a href="{% url 'signup' %}">New User?</a></button>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
