@@ -33,7 +33,7 @@
           <div class="author-name">
            {{Profile.username}}
 
-            <a href="{% url 'profile'%}">(View posts)</a>
+            <a href="{% url 'userProfile' Profile.id %}">(View posts)</a>
           </div>
           <div class="author-Bio">
             <h5>{{Profile.Name}}</h5>

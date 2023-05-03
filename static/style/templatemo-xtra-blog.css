@@ -272,7 +272,8 @@ ul {
     border: none;
 }
 
-.tm-btn-small { padding: 8px 33px; }
+.tm-btn-small { padding: 8px 33px;
+margin: 20px 130px 0px 0px; }
 
 .tm-btn-primary:hover {
     background-color: #09b6b6;
@@ -329,10 +330,12 @@ ul {
 .tm-copyright { text-align: right; }
 
 /* Single Post page */
-hr.tm-hr-primary { border-top: 5px solid #0CC; }
+hr.tm-hr-primary { border-top: 5px solid #0CC; 
+font-weight: bold;}
 
  img {
     width: 812px;
+    position: center;
     overflow: hidden;
     height: 512px;
 }
@@ -347,6 +350,7 @@ button1{
 .tm-comment {
     display: flex;
     align-items: flex-start;
+    flex-direction: column-reverse;
 }
 
 .tm-comment-figure {
@@ -382,7 +386,7 @@ height: 60px;}
 .tm-pt-45 { padding-top: 45px; }
 .tm-pt-60 { padding-top: 60px; }
 .tm-mb-40 { margin-bottom: 40px; }
-.tm-mb-45 { margin-bottom: 45px; }
+/* .tm-mb-45 { margin-bottom: 45px; } */
 .tm-mb-55 { margin-bottom: 55px; }
 .tm-mb-60 { margin-bottom: 60px; }
 .tm-mb-65 { margin-bottom: 65px; }
@@ -392,7 +396,10 @@ height: 60px;}
 .tm-mt-40 { margin-top: 40px; }
 .tm-mt-100 { margin-top: 100px; }
 .tm-mr-20 { margin-right: 20px; }
-.tm-color-primary, span.tm-color-primary { color: #099; }
+.tm-color-primary { color: #099; 
+}
+span.tm-color-primary{ color: #099; 
+    margin: 2px 0px 0px 14px;}
 a.tm-color-gray, .tm-color-gray { color: #999; }
 a.tm-color-gray:hover { color: #099; }
 .tm-bg-gray { background-color: #F3F4F5; }

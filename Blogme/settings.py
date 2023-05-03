@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'blogging.apps.BloggingConfig',
     'user.apps.UserConfig',
     'ckeditor',
+    'django_otp',
+    'django_otp.plugins.otp_totp'
 
 ]
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'django_otp.middleware.OTPMiddleware'
 ]
 
 ROOT_URLCONF = 'Blogme.urls'
@@ -79,15 +82,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Blogme.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+#Database
+ #https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+      'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+   }
+       }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'blogme',
+#         'USER':'krishna',
+#          'PASSWORD':'krishna',
+#         'HOST':'localhost',
+#         'PORT': '5432',     
+#         }
+#  }
+
 
 
 # Password validation
@@ -139,7 +153,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'krishna.upadhyayyy@gmail.com'
-EMAIL_HOST_PASSWORD = 'emdmvqfrzpbpuzrk'
+EMAIL_HOST_PASSWORD = 'jlnnldhidvxlpjrh'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -152,14 +166,13 @@ STATICFILES_DIRS=[
     BASE_DIR / 'static',
 ]
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR,'static/images')
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-# STATIC_ROOT=os.path.join(BASE_DIR,'static')
-# STATIC_FILE_DIRS=[BASE_DIR/'static']
 
-# STATIC_URL ='images/'
-# STATIC_ROOT=os.path.join(BASE_DIR,'images')
 STATIC_FILE_DIRS=[BASE_DIR/'images']
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_PROFILE_MODULE = 'user.Profile'

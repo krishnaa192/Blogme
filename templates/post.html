@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="fontawesome/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 <!-- https://fonts.google.com/ -->
+<link href="{% static 'style/read.css' %}" rel="stylesheet">
 <link href="{% static 'style/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'style/templatemo-xtra-blog.css'%}" rel="stylesheet">
 {% endblock %} {% block body %} {% include 'header.html' %}
@@ -29,7 +30,9 @@
         <div class="row tm-row">
             <div class="col-12">
                 <hr class="tm-hr-primary tm-mb-55">
+                {% if post.blog_image%}
                 <img src="{{post.blog_image.url}}" width="954" height="535" class="tm-mb-40">
+                {% endif %}
             </div>
         </div>
         <div class="row tm-row">
@@ -37,67 +40,54 @@
                 <div class="tm-post-full">
                     <div class="mb-4">
                         <h2 class="pt-2 tm-color-primary tm-post-title">{{post.blog_title}}</h2>
-                        <p class="tm-mb-40">{{post.upload}} posted by {{post.Author}}</p>
-
+                        <p class="tm-mb-40">{{post.upload}} posted by <a href="{% url 'userProfile' post.id %}">
+                                {{post.Author}}</a> </p>
                         {{post.blog}}
-                        <b>Pen_name:{{post.Pen_name}}</b>
-                        
-                        <span class="d-block  tm-color-primary">Tags:{{post.tags}}</span>
+                        <div class="post-tags">
+                            <a href="#" class="tag">Pen_name:{{post.Pen_name}}</a>
+                            <a href="#" class="tag">:{{post.tags}}</a>
+                        </div>
                     </div>
+                    {% if user.is_authenticated %}
+                    {% if profile.id == post.Author.id %}
+                    <div class="btn"><a href="{% url 'update_blog' post.id %}">Edit</a></div>
+                    <div class="btn"><a href="{% url 'delete_blog' post.id %}">delete</a></div>
+                    {% endif %}
+                    {% endif %}
                     <!-- Comments -->
-                    <!-- <div>
+                    <div>
                         <h2 class="tm-color-primary tm-post-title">Comments</h2>
                         <hr class="tm-hr-primary tm-mb-45">
                         <div class="tm-comment tm-mb-45">
+                            <hr>
                             <figure class="tm-comment-figure">
-                                <img src="{{post.blog_image.url}}" alt="Image"
-                                    class="mb-2 rounded-circle img-thumbnail">
-                                <figcaption class="tm-color-primary text-center">Mark Sonny</figcaption>
+                                {% for comments in cmt %}
+                                <!-- <img src="{{post.blog_image.url}}" alt="Image" -->
+                                <!-- class="mb-2 rounded-circle img-thumbnail"> -->
+                                <figcaption class="tm-color-primary text-center"></figcaption>
                             </figure>
                             <div>
+                                <a href="#" class="tm-color-primary">{{comments.user}}</a>
                                 <p>
-                                    Praesent aliquam ex vel lectus ornare tritique. Nunc et eros
-                                    quis enim feugiat tincidunt et vitae dui. Nullam consectetur
-                                    justo ac ex laoreet rhoncus. Nunc id leo pretium, faucibus
-                                    sapien vel, euismod turpis.
+                                    {{comments.content}}
                                 </p>
                                 <div class="d-flex justify-content-between">
-                                    <a href="#" class="tm-color-primary">REPLY</a>
-                                    <span class="tm-color-primary">June 14, 2020</span>
+
+                                    <span class="tm-color-primary"> at {{ comments.timestamp}}</span>
                                 </div>
+                                <hr>
+                                {% endfor %}
                             </div>
                         </div>
-                        <div class="tm-comment-reply tm-mb-45">
-                            <hr>
-                            <div class="tm-comment">
-                                <figure class="tm-comment-figure">
-                                    <img src="img/comment-2.jpg" alt="Image" class="mb-2 rounded-circle img-thumbnail">
-                                    <figcaption class="tm-color-primary text-center">Jewel Soft</figcaption>
-                                </figure>
-                                <p>
-                                    Nunc et eros quis enim feugiat tincidunt et vitae dui.
-                                    Nullam consectetur justo ac ex laoreet rhoncus. Nunc
-                                    id leo pretium, faucibus sapien vel, euismod turpis.
-                                </p>
-                            </div>
-                            <span class="d-block text-right tm-color-primary">June 21, 2020</span>
-                        </div>
-                        <form action="" class="mb-5 tm-comment-form">
-                            <h2 class="tm-color-primary tm-post-title mb-4">Your comment</h2>
-                            <div class="mb-4">
-                                <input class="form-control" name="name" type="text">
-                            </div>
-                            <div class="mb-4">
-                                <input class="form-control" name="email" type="text">
-                            </div>
-                            <div class="mb-4">
-                                <textarea class="form-control" name="message" rows="6"></textarea>
-                            </div>
+                        
+                        <form action="." class="mb-5 tm-comment-form" class="commenting-form" method="post" >
+                            {% csrf_token %}
+                            {{form.as_p}}
                             <div class="text-right">
-                                <button1 class="tm-btn tm-btn-primary tm-btn-small">Submit</button1>
+                                <button class="tm-btn tm-btn-primary tm-btn-small">Submit</button>
                             </div>
                         </form>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>

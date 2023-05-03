@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
     path("", views.Home, name="Home"),
-    path('authors/', views.authors, name="authors"),
+    
     path('Blogpage/', views.Blogpage, name="Blogpage"),
     path('Read/<str:pk>/', views.Read, name="Read"),
     path('Submit_Form',views.Submit_Form,name="Submit_Form"),

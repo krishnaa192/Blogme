@@ -13,8 +13,7 @@ from ckeditor.fields import RichTextField
 class Tags(models.Model):
     name=models.CharField(max_length=9)
     created=models.DateTimeField(auto_now_add=TRUE)
-    id=models.UUIDField(default=uuid.uuid4, unique=True,
-                          primary_key=True, editable=False)
+    
    
     class Meta:
         ordering=['created']
@@ -29,10 +28,9 @@ class Blog(models.Model):
     blog=RichTextField()
     blog_title=models.CharField(max_length=33)
     desc=models.CharField(max_length=100, null=True)
-    id=models.UUIDField(default=uuid.uuid4, unique=True,
-                          primary_key=True, editable=False)
-    blog_image = models.ImageField(
-        null=True, blank=True, default="ppp.jpg")
+    
+    blog_image = models.ImageField( upload_to='static/blogging/authors',default='ppp.jpg',
+        null=True, blank=True)
     Pen_name=models.CharField(max_length=7)
     tags=models.ForeignKey(Tags, on_delete=models.CASCADE,null=True,blank=True,name="tags")
     upload=models.DateTimeField(auto_now_add=True)
@@ -42,3 +40,36 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.blog_title    
+    
+
+class Subscribe(models.Model):
+    email = models.EmailField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+
+class likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+    post = models.ForeignKey('Blog', related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+
+STATUS_CHOICES = ( 
+   ('draft', 'Draft'), 
+   ('published', 'Published'), 
+) 

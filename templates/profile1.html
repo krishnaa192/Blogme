@@ -1,4 +1,4 @@
-{% extends 'header.html' %}
+
 {% load static %}
 {% block css%}
 <link rel="stylesheet" href="{% static 'style/profile1.css' %}">
@@ -31,29 +31,21 @@
 
                   <div class="profile-user-name">{{profile.username}}</div>
 
-                <!-- <button class="btn profile-edit-btn"> <a href="{% url 'edit_profile' %}">Edit Profile</a></button> -->
-
-                <!-- <button class="btn profile-settings-btn" aria-label="profile settings"><a
+            <button class="btn profile-edit-btn"> <a href="{% url 'edit_profile' %}">Edit Profile</a></button> 
+             <div class="set_button">
+                 <button class="btn profile-settings-btn" aria-label="profile settings"><a
                         href="{% url 'edit_profile' %}"><i class="fa fa-cog" aria-hidden="true"
-                            style='font-size:3</div>0px'></i></a></button> -->
-
+                            style='font-size:3</div>0px'></i></a></button> 
             </div>
-
+        </div>
             <div class="profile-stats">
-
                 <ul>
-                    <li><span class="profile-stat-count">164</span> posts</li>
-                    <li><span class="profile-stat-count">188</span> followers</li>
-                    <li><span class="profile-stat-count">206</span> following</li>
+                 <li><span class="profile-stat-count">{{posts}}</span> posts</li>
                 </ul>
-
             </div>
-
             <div class="profile-bio">
-
                 <p><span class="profile-real-name">{{profile.Name}}</span> <br> {{ profile.Bio|slice:":155" }}
                     📷✈️🏕️</p>
-
             </div>
         </div>
         <div class="social-media">
@@ -92,22 +84,23 @@
         {% for blog in blogs %}
         <div class="gallery">
            
-            <div class="gallery-item" tabindex="0">
-                <a href="{% url 'Read' blog.id%}">
+            <div class="gallery-item">
+               <a href="{% url 'Read' blog.id%}">
                  <img src="{{blog.blog_image.url}}" class="gallery-image" alt="">   
-                </a>
+                </a></div>
+
 
                 <div class="gallery-item-info">
 
                     <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fa fa-heart"
-                                aria-hidden="true"></i> 56</li>
+                        <!-- <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fa fa-heart"
+                                aria-hidden="true"></i> 56</li> -->
                         <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i
-                                class="fa fa-comment" aria-hidden="true"></i> 2</li>
+                                class="fa fa-comment" aria-hidden="true"></i> {{cmt}}</li>
                     </ul>
                 </div>
                
-                </div>
+                
                 <!-- <a href="{% url 'Read' blog.id%}">{{blog.blog_title}}</a> -->
             </div>
             {% endfor %}

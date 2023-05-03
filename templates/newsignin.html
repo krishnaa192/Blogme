@@ -10,14 +10,12 @@
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
     {% endfor %}
 </ul>
 {% endif %}
 <div class="main">
   <a href="{% url 'Home' %}"><i class="fa fa-arrow-left" style='font-size:36px' aria-hidden="true"></i></a>
-
-
 <form action="{% url 'login' %}" method="POST">
  
 {%  csrf_token %}
@@ -39,7 +37,7 @@
 <br>
   <div class="container-1" >
      <a href="{% url 'signup' %}">New User?</a>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+    <span class="psw">Forgot <a href="{% url 'reset_password' %}">password?</a></span>
   </div>
 </form>
 </div>

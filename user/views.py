@@ -1,12 +1,13 @@
 
 from django.shortcuts import render
 from .models import Profile
+
 from django.shortcuts import redirect
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import CustomUserCreationForm,ProfileForm
-from blogging.models import Blog
+from blogging.models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -73,16 +74,30 @@ def signup(request):
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = "home.html" 
 
+def userProfile(request, pk):
+    profile = Profile.objects.get(id=pk)
+    blogs=Blog.objects.filter(Author=profile.id)
+    context = {'profiles': profile,'blogs':blogs}
+    return render(request, 'user-profile.html', context)
 
 
 @login_required(login_url="login")
-def profile(request):
+def profile(request,pk):
     profile=Profile.objects.get(user=request.user)
+    post=Blog.objects.filter(id=pk).first()
     blogs=Blog.objects.filter(Author=profile).order_by('upload')
-
+    comments=Comment.objects.filter(post=post)
+    cmt=len(comments)
     posts=len(blogs)
-    context={ 'profile': profile,'blogs':blogs,'posts':posts}
+    context={ 'profile': profile,'blogs':blogs,'posts':posts,'cmt':cmt}
     return render(request, 'profile1.html',context)
+
+
+
+def authors(request):
+    author=Profile.objects.all()
+    a_pms={'author':author}
+    return render(request, "author.html",a_pms)
 
 @login_required(login_url="login")
 def edit_profile(request):

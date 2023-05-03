@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Blog
+from .models import *
 from django import forms
 from .models import Tags,Blog
 #create_form
@@ -23,4 +23,13 @@ class SubmitForm(ModelForm):
         for name, field in self.fields.items():
             field.widget.attrs.update({'class': 'input'})
 
-    
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'placeholder': 'Type your comment',
+        'id': 'usercomment',
+        'rows': 4
+    }))
+    class Meta:
+        model = Comment
+        fields =('content',)

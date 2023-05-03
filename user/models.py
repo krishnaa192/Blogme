@@ -9,8 +9,6 @@ from django.db.models.signals import post_save
 
 # Create your models here.
 class Profile(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, unique=True,
-                          primary_key=True, editable=False)
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=True,unique=False)
     username=models.CharField(max_length=10)
     Name=models.CharField(max_length=200,blank=True,null=True)
