@@ -1,7 +1,6 @@
 
-from django.shortcuts import render
-from .models import Profile
-
+from django.shortcuts import get_object_or_404, render
+from .models import *
 from django.shortcuts import redirect
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
@@ -48,7 +47,16 @@ def loginuser(request):
             messages.error(request,"User not found")
     return render(request, 'newsignin.html')
 
-
+def follower_count(request):
+    if request.method == 'POST':
+        value = request.POST['value']
+        user = request.POST['user']
+        follower = request.POST['follower']
+        if value == 'follow':
+            follow = Follow.objects.create(user=user, follower=follower)
+            follow.save()
+        
+        return redirect('/?user'+user)
 
 def logoutuser(request):
     logout(request)
@@ -75,21 +83,29 @@ class HomeView(LoginRequiredMixin, TemplateView):
     template_name = "home.html" 
 
 def userProfile(request, pk):
-    profile = Profile.objects.get(id=pk)
+    profile = get_object_or_404(Profile, id=pk)
+    loggged = get_object_or_404(Profile, user=request.user)
     blogs=Blog.objects.filter(Author=profile.id)
-    context = {'profiles': profile,'blogs':blogs}
+    follow=Follow.objects.filter(follower=profile.id)
+    follower_coun=len(follow)
+    posts=len(blogs)
+    context = {'profiles': profile,'blogs':blogs,'loggged':loggged,'follower_coun':follower_coun,'posts':posts}
     return render(request, 'user-profile.html', context)
 
 
 @login_required(login_url="login")
 def profile(request,pk):
     profile=Profile.objects.get(user=request.user)
+    follow=Follow.objects.filter(follower=profile.id)
+    val=len(follow)
+    print(val)
+   
     post=Blog.objects.filter(id=pk).first()
     blogs=Blog.objects.filter(Author=profile).order_by('upload')
     comments=Comment.objects.filter(post=post)
     cmt=len(comments)
     posts=len(blogs)
-    context={ 'profile': profile,'blogs':blogs,'posts':posts,'cmt':cmt}
+    context={ 'profile': profile,'blogs':blogs,'posts':posts,'cmt':cmt,'follow':follow,'val':val}
     return render(request, 'profile1.html',context)
 
 

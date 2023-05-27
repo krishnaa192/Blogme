@@ -40,8 +40,13 @@
         </div>
             <div class="profile-stats">
                 <ul>
-                 <li><span class="profile-stat-count">{{posts}}</span> posts</li>
+                 <li><span class="profile-stat-count">{{posts}}</span> Posts</li>
+                 <li><span class="profile-stat-count">{{val}}</span> Follower</li>
+
+                      
                 </ul>
+                
+                <!-- <a href="#">Follow</a> -->
             </div>
             <div class="profile-bio">
                 <p><span class="profile-real-name">{{profile.Name}}</span> <br> {{ profile.Bio|slice:":155" }}

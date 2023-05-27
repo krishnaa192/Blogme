@@ -106,7 +106,11 @@ img {
     color: #4d90fe;
     font-weight: bold;
 }
-
+button .profile-stats-count{
+    padding: 1px 8px 0px 18px;
+    color: #4d90fe;
+    font-weight: bold;
+}
  .profile-user-settings {
     margin-top: 1.1rem;
     margin-bottom: -5rem;
@@ -162,7 +166,7 @@ img {
  display: flex;
  /* flex-flow: row wrap; */
  padding: 267px 0px 0px 10px;
- margin: 84px 390px 0px -125px;
+ margin: 84px 0px 0px 0px;
  }
  .social-media ul li a{
     text-decoration: none;

@@ -28,3 +28,11 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username    
 
+class Follow(models.Model):
+
+    
+    follower = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='followed_user', on_delete=models.CASCADE ,default="")
+
+    class Meta:
+        unique_together = ('follower', 'user')

@@ -30,21 +30,28 @@
             <div class="profile-user-settings">
 
                   <div class="profile-user-name">{{profiles.username}}</div>
-
-                <!-- <button class="btn profile-edit-btn"> <a href="{% url 'edit_profile' %}">Edit Profile</a></button> -->
-
-                <!-- <button class="btn profile-settings-btn" aria-label="profile settings"><a
-                        href="{% url 'edit_profile' %}"><i class="fa fa-cog" aria-hidden="true"
-                            style='font-size:3</div>0px'></i></a></button> -->
-
+<form action="follower_count" method="post">
+   {%csrf_token%}
+   <input type="hidden" name="user" value="{{profile.user}}" readonly/>
+   <input type="hidden" name="follower" value="{{user.username}}" />
+   <input type="hidden" name="value" value="follow" readonly/>
+   
+                <button class="btn profile-edit-btn"><a href="">Follow</a></button> 
+            </form >
+                <div class="set_button">
+                    <button  type="submit" class="btn profile-settings-btn" aria-label="profile settings"><a
+                           href="{% url 'edit_profile' %}"><i class="fa fa-cog" aria-hidden="true"
+                               style='font-size:3</div>0px'></i></a></button> 
+               </div>
             </div>
 
             <div class="profile-stats">
 
                 <ul>
-                    <li><span class="profile-stat-count">164</span> posts</li>
-                    <li><span class="profile-stat-count">188</span> followers</li>
-                    <li><span class="profile-stat-count">206</span> following</li>
+                    <li><span class="profile-stat-count">{{posts}}</span> posts</li>
+                    
+                    <li><span class="profile-stat-count">{{follower_coun}}</span> Following</li>
+                  
                 </ul>
 
             </div>
@@ -95,7 +102,7 @@
             <div class="gallery-item" tabindex="0">
                 <a href="{% url 'Read' blog.id%}">
                  <img src="{{blog.blog_image.url}}" class="gallery-image" alt="">   
-                </a>
+                </a></div>
 
                 <div class="gallery-item-info">
 
