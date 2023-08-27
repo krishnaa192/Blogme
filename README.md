@@ -1,5 +1,5 @@
 # 💫 About Me:
-I am a backend web developer.<br>I work in Django development.<br>Doing  BE  from the ECE branch (2020-2024).<br>
+I am a backend web developer.<br>I work in Django and React development.<br>Doing  BE  from the ECE branch (2020-2024).<br>
 
 
 ## 🌐 Socials:
