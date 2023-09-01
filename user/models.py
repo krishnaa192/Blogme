@@ -14,7 +14,7 @@ class Profile(models.Model):
     Name=models.CharField(max_length=200,blank=True,null=True)
     email=models.EmailField(max_length=200, null=True)
     Bio=models.TextField(blank=True,null=True)
-    auth_image=models.ImageField(null=True,blank=True,upload_to='static/blogging/authors',default='ppp.jpg')
+    auth_image=models.ImageField(null=True,blank=True,upload_to='media/images/authors',default='ppp.jpg')
     instagram=models.CharField(max_length=200 , null=True)
     linkedin=models.CharField(max_length=200 , null=True)
     sign_up=models.DateTimeField(auto_now_add=True)

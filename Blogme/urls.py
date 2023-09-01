@@ -31,9 +31,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('blogging.urls')),
     path("", include('user.urls')),
-    path('oauth/', include('social_django.urls', namespace='social')),
-
- 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name='reser_pass.html'),
          name="reset_password"),
 

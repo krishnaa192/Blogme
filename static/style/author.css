@@ -186,3 +186,31 @@
             padding:  16px 23px;
             margin:  18px 2px;
         }
+
+        @media screen and (max-width: 768px) {
+          header {
+              height: 100px; /* Adjust the header height for smaller screens */
+          }
+      
+          .menu ul {
+              flex-direction: column; /* Stack menu items vertically */
+              position: static; /* Reset position */
+          }
+      
+          .author-info {
+              flex-direction: column; /* Stack author info vertically */
+          }
+      
+          .social-buttons {
+              margin: 10px 0; /* Reduce margin for smaller screens */
+          }
+      
+          .author-button {
+              margin: 10px 0; /* Reduce margin for smaller screens */
+          }
+      }
+      
+      /* Additional media queries for even smaller screens if needed */
+      @media screen and (max-width: 576px) {
+          /* Add more adjustments for very small screens */
+      }

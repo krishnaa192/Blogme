@@ -29,7 +29,7 @@ class Blog(models.Model):
     blog_title=models.CharField(max_length=33)
     desc=models.CharField(max_length=100, null=True)
     
-    blog_image = models.ImageField( upload_to='static/blogging/authors',default='ppp.jpg',
+    blog_image = models.ImageField( upload_to='media/images/blogs',default='ppp.jpg',
         null=True, blank=True)
     Pen_name=models.CharField(max_length=7)
     tags=models.ForeignKey(Tags, on_delete=models.CASCADE,null=True,blank=True,name="tags")
