@@ -55,7 +55,9 @@ Make sure you are in env and then do the following each at a time.
 #Some screenshot of website...
 ![Screenshot from 2023-03-28 22-14-53](https://user-images.githubusercontent.com/86311851/228313365-4e72fd39-2b16-480c-9f37-6b3fec24bd0b.png)
 ![Screenshot from 2023-03-28 22-15-07](https://user-images.githubusercontent.com/86311851/228313439-7a7ef339-7d82-4c7b-98da-9b69cb07dc1a.png)
-![Screenshot from 2023-03-28 22-12-53](https://user-images.githubusercontent.com/86311851/228313481-b430398f-4b88-451c-9daa-0c6c0c9d6bdd.png)
+![Screenshot from 2023-09-02 01-05-39](https://github.com/krishnaa192/Blogme/assets/86311851/20eb7096-ff5a-4f41-b0c6-bf7f0613ba91)
+
+
 ![Screenshot from 2023-03-28 22-11-57](https://user-images.githubusercontent.com/86311851/228313548-d0d07e3a-e437-4e3c-a22f-ad99af092970.png)
 
 Features <br>
